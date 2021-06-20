@@ -1,14 +1,4 @@
-output "instance_id" {
-  description = "ID of the EC2 instance"
-  value       = aws_instance.app_server.id
-}
-
-output "instance_tags" {
-  description = "Tags of the EC2 instance"
-  value       = aws_instance.app_server.tags
-}
-
-output "instance_public_ip" {
-  description = "Public IP address of the EC2 instance"
-  value       = aws_instance.app_server.public_ip
+output "public_dns_names" {
+  description = "Public DNS names of the load balancers for each project"
+  value       = { for p in sort(keys(var.project)) : p => module.elb_http[p].this_elb_dns_name }
 }
