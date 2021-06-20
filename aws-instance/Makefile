@@ -1,7 +1,7 @@
 .DEFAULT_GOAL := info
 
 info:
-	@echo init, show, plan, apply, destroy, state_list, output
+	@echo init, show, plan, apply, destroy, state_list, output, gen_graph, dot_graph
 
 init:
 	terraform init
@@ -23,3 +23,9 @@ state_list:
 
 output:
 	terraform output
+
+gen_graph:
+	terraform graph >>graphviz.dot
+
+dot_graph:
+	dot -Tpdf graphviz.dot > file.pdf
