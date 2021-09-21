@@ -30,7 +30,8 @@ data "aws_availability_zones" "available" {
 
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
-  version = "2.66.0"
+  #version = "2.66.0"
+  version = "3.7.0"
 
   for_each = var.project
 
